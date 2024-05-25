@@ -31,7 +31,7 @@ def mylogin(fn):
           if obj.user!=request.user:
 
                return redirect('signin')
-          else:
+          else: 
                return fn(request,**kwargs)
           
      return wrapper
@@ -184,5 +184,5 @@ class Update_user(View):
           if form.is_valid():
 
                form.save()
-
-               return render(request,'register.html')
+               print("update success")
+          return redirect('reg')

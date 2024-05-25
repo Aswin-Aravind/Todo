@@ -25,6 +25,6 @@ class Taskform(forms.ModelForm):
 
 
 class LoginForm(forms.Form):
-   
-   username=forms.CharField()
-   password=forms.CharField()
+
+   username=forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
+   password=forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))

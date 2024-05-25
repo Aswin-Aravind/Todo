@@ -1,0 +1,66 @@
+================================Todo===============================
+
+
+USER REGISTRATION(APIView)
+
+# method:post
+  url:http://127.0.0.1:8000/api/register/
+  data:{
+  "id": 21,
+  "username": "karthikeyan",
+  "password": "pbkdf2_sha256$720000$9k4MutfoFGh6mvZVDYZkSC$ts6txHeMDWRntlqIycG8h6jjowK/Vvd2CnQ/xXYXuSQ=",
+  "email": "karthikkb85@gmail.com",
+  "first_name": "karthikeyan",
+  "last_name": "balamurugan"
+}
+  
+
+VIEWSET
+
+# method:get(list)
+  url:http://127.0.0.1:8000/api/todos/
+  data:null
+
+
+# method:create(post)
+  url:http://127.0.0.1:8000/api/todos/
+  data: task_name = New country
+        task_description = Germany
+
+                {
+          "id": 32,
+          "task_name": "New Country",
+          "task_description": "Germany",
+          "created_data": "14:45:14.861669",
+          "completed": false,
+          "user": 21
+        }
+
+
+# method:destroy(delete)
+  url:http://127.0.0.1:8000/api/todos/
+  data:null
+
+
+# method:retrieve()
+  url:http://127.0.0.1:8000/api/todos/34/
+  data:{
+    "id": 34,
+    "task_name": "New  House in Chennai",
+    "task_description": "At Sulthanpet",
+    "created_data": "11:46:37.983046",
+    "completed": false,
+    "user": 21
+   }
+
+
+# method:update()
+  url:http://127.0.0.1:8000/api/todos/34/
+  data:  {
+  "id": 34,
+  "task_name": "New House",
+  "task_description": "At Anna Nagar, Chennai",
+  "created_data": "11:46:37.983046",
+  "completed": false,
+  "user": 21
+  }
