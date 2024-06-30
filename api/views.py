@@ -5,6 +5,8 @@ from api.serializers import Registration,User,Taskmodel,Todoserializer
 from rest_framework import authentication,permissions
 from rest_framework.viewsets import ViewSet,ModelViewSet
 from rest_framework import status,serializers
+from rest_framework.decorators import action 
+from api.permissions import OwnerOnly
 
 
 
@@ -106,8 +108,30 @@ class Todoviewsetview(ViewSet):
       else:
 
          raise serializers.ValidationError("not allowed")
+      
 
 
+   @action(methods=['delete'],detail=False)
+   def delete_user_null(self,request,*args,**kwargs):
+
+      # Taskmodel.objects.all()
+
+      # for i in Taskmodel:
+
+      qs=Taskmodel.objects.all()
+
+      for i in qs:
+
+         if i.user==True:
+
+               i.delete()
+      return Response({"message":"deleted"})
+
+
+
+
+
+########################################## ModelViewSet ################################################################
 
 class Todomodelviewset(ModelViewSet):
 
@@ -117,10 +141,16 @@ class Todomodelviewset(ModelViewSet):
 
    authentication_classes=[authentication.TokenAuthentication]
 
-   permission_classes=[permissions.IsAuthenticated]
+   permission_classes=[OwnerOnly]
 
 
-   def perform_create(self, serializer):
-      return serializer.save(user=self.request.user)
-   # def get_queryset(self):
-   #    return Taskmodel.objects.filter(user=self.request.user)
+   # def perform_create(self, serializer):
+   #    return serializer.save(user=self.request.user)
+   
+   def get_queryset(self):
+      return Taskmodel.objects.filter(user=self.request.user)
+
+
+
+
+

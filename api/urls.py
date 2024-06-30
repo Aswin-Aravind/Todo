@@ -25,6 +25,8 @@ router=DefaultRouter()
 router.register('todomodel',Todomodelviewset,basename='modelapi')
 
 
+
+
 urlpatterns=[
     path('register/',Userregister.as_view(),name='register'),
     path('token/',ObtainAuthToken.as_view(),name='token'),
@@ -33,5 +35,6 @@ urlpatterns=[
 ]+router.urls
 
 # router.register('todos',Todoviewsetview,basename='api')
+
 
 
